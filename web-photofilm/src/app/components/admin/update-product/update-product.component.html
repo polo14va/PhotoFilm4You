@@ -1,0 +1,56 @@
+<div class="card px-1 bg-dark">
+    <div class="text-center text-white mt-2">
+        <h4>Detalles de los productos actuales</h4>
+    </div>
+    <div>
+        <table class="table table-sm table-striped table-bordered my-1 align-middle">
+            <caption class="text-white text-end">Tabla que muestra los productos actuales</caption>
+            <thead class="align-middle">
+                <tr class="text-center">
+                    <th scope="col">id</th>
+                    <th scope="col">nombre</th>
+                    <th scope="col">descripción</th>
+                    <th scope="col">precio diario <br> €/dia</th>
+                    <th scope="col">marca</th>
+                    <th scope="col">modelo</th>
+                    <th scope="col">categoria</th>
+                    <th scope="col">actualizar</th>
+                    <th scope="col">eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td class="text-center"><strong>{{ product.id }}</strong></td>
+                    <td class="col-md-2">
+                        <input class="form-control" type="text" name="{{ product.name }}" [(ngModel)]="product.name">
+                    </td>
+                    <td class="col-md-3">
+                        <input class="form-control" type="text" name="{{ product.description }}" [(ngModel)]="product.description">
+                    </td>
+                    <td class="col-md-2">
+                        <input class="form-control" type="number" name="{{ product.dailyPrice }}" [(ngModel)]="product.dailyPrice">
+                    </td>
+                    <td class="col-md-2">
+                        <input class="form-control" type="text" name="{{ product.brand }}" [(ngModel)]="product.brand">
+                    </td>
+                    <td class="col-md-2">
+                        <input class="form-control" type="text" name="{{ product.model }}" [(ngModel)]="product.model">
+                    </td>
+                    <td class="col-md-2">
+                        <input class="form-control" type="number" name="{{ product.categoryId }}" [(ngModel)]="product.categoryId">
+                    </td>
+                    <td class="text-center">
+                        <button class="btn btn-outline-success" (click)="update(product)">
+                            <strong>U</strong>
+                        </button>
+                    </td>
+                    <td class="text-center">
+                        <button class="btn btn-outline-danger" (click)="delete(product)">
+                            <strong>X</strong>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

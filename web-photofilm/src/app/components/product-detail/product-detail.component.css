@@ -1,0 +1,7 @@
+/* Para pantallas grandes */
+@media (min-width: 768px) {
+  .product-retail-card {
+    max-width: 98%; /* Establece el ancho máximo del 98% solo en pantallas grandes */
+    margin: 0 auto;
+  }
+}

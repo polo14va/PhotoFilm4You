@@ -1,0 +1,47 @@
+# Configuración específica para el proyecto web
+compilarFrontend:
+  image: node:latest
+  stage: compilar
+  script:
+    - echo "Compilando el frontend"
+    - cd web-photofilm
+    - npm in
+    - npm run build
+    - cd ../
+  allow_failure: false
+
+pruebasAutomaticasWeb:
+  image: node:latest
+  stage: pruebasAutomaticas
+  script:
+    - echo "Ejecutando pruebas automáticas del frontend"
+    - cd web-photofilm
+    - npm install
+    - npm install -g @angular/cli
+    - ng test
+    - cd ../
+
+sonarWeb:
+  image:
+    name: sonarsource/sonar-scanner-cli:4.6
+    entrypoint: [ "" ]
+  stage: sonarQube
+  variables:
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
+    GIT_DEPTH: "0"
+    SONAR_HOST_URL: "http://pdp-pds-sq.uoclabs.uoc.es/"
+    SONAR_TOKEN: "0d792c069be654241d2bf8a071406d8148f28dd2"
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+  script:
+    - echo "Ejecutando SonarQube para web-photofilm"
+    - cd web-photofilm
+    - apk add --update npm
+    - npm install
+    - npm install jest jest-environment-jsdom @types/jest --save-dev
+    - npm install -g @angular/cli
+    - sonar-scanner
+  allow_failure: false
+

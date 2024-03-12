@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <!-- new category form -->
+        <div class="col-5">
+            <div class="container">
+                <div class=" card px-1 bg-dark">
+                    <div class="text-center text-white mt-2">
+                        <h4>Añadir Administrador</h4>
+                    </div>
+                    <div class="bg-white my-1 p-3">
+                        <form [formGroup]="newAdminForm" (ngSubmit)="onSubmit()">
+                            <div class="mb-1">
+                                <div class="row">
+                                    <!-- email -->
+                                    <div class="col-7">
+                                        <label for="email" class="form-label">Introducir email de usuario:</label>
+                                        <input type="text" class="form-control" id="email" formControlName="email" placeholder="Ingrese el email del usuario">
+                                        <div *ngIf="!newAdminForm.get('email')?.pristine && newAdminForm.get('email')?.hasError('required')" class="alert alert-danger">
+                                            Email requerido.
+                                        </div>
+                                        <div *ngIf="emailNotFoundError" class="alert alert-danger">
+                                            {{ emailNotFoundError }}
+                                        </div>
+                                    </div>
+                            
+                                </div>
+                            </div>
+        
+                            <!-- submit button -->
+                            <div class="text-start">
+                                <button type="submit" class="btn btn-primary" [disabled]="newAdminForm.invalid">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

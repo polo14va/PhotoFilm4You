@@ -1,0 +1,91 @@
+<div class="card">
+    <div class="card-header">
+        Registro
+    </div>
+    <div class="card-body">
+        <!-- Formulario de registro reactivo -->
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label for="fullName" class="form-label">Nombre completo</label>
+                <input type="text" class="form-control" id="fullName" formControlName="fullName">
+                <div id="err-name-required" *ngIf="!registerForm.get('fullName')?.pristine && registerForm.get('fullName')?.hasError('required')" class="alert alert-danger">
+                    Nombre completo requerido.
+                </div>
+                <div id="err-name-atleast5char" *ngIf="registerForm.get('fullName')?.hasError('minlength')" class="alert alert-danger">
+                    El nombre debe tener al menos 5 caracteres.
+                </div>
+                <div id="err-name-notvalid" *ngIf="!registerForm.get('fullName')?.hasError('required') && !registerForm.get('fullName')?.hasError('minlength') && registerForm.get('fullName')?.hasError('pattern')" class="alert alert-danger">
+                    Debes introducir un nombre válido
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="email" formControlName="email">
+                <div id="err-email-required" *ngIf="!registerForm.get('email')?.pristine && registerForm.get('email')?.hasError('required')" class="alert alert-danger">
+                    Correo electrónico requerido.
+                </div>
+                <div id="err-email-notvalid" *ngIf="registerForm.get('email')?.hasError('email')" class="alert alert-danger">
+                    Introduce un correo electrónico válido.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <div class="input-group">
+                    <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" id="password" formControlName="password">
+                    <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
+                    <em class="{{ showPassword ? 'fas fa-eye' : 'fas fa-eye-slash' }}"></em>
+                  </button>
+                </div>
+                <p class="x-small">La contraseña debe tener al menos 8 caracteres, de los cuales al menos un número, una letra mayúscula y una minúscula</p>
+                <div id="err-password-required" *ngIf="!registerForm.get('password')?.pristine && registerForm.get('password')?.hasError('required')" class="alert alert-danger">
+                    Contraseña requerida.
+                </div>
+                <div id="err-password-atleast8char" *ngIf="registerForm.get('password')?.hasError('minlength')" class="alert alert-danger">
+                    La contraseña debe tener al menos 8 caracteres.
+                </div>
+                <div id="err-password-notvalid" *ngIf="!registerForm.get('password')?.hasError('required') && !registerForm.get('password')?.hasError('minlength') && registerForm.get('password')?.hasError('pattern')" class="alert alert-danger">
+                    La contraseña debe contener al menos un número, una letra mayúscula y una minúscula.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="password2" class="form-label">Repite la Contraseña</label>
+                <div class="input-group">
+                    <input type="{{ showPassword2 ? 'text' : 'password' }}" class="form-control" id="password2" formControlName="password2">
+                    <button type="button" class="btn btn-outline-secondary" (click)="togglePassword2Visibility()">
+                    <em class="{{ showPassword2 ? 'fas fa-eye' : 'fas fa-eye-slash' }}"></em>
+                  </button>
+                </div>
+                <div *ngIf="!registerForm.get('password2')?.pristine && registerForm.get('password2')?.hasError('required')" class="alert alert-danger">
+                    Repetir la contraseña anterior.
+                </div>
+                <div *ngIf="!registerForm.get('password2')?.pristine && !registerForm.get('password2')?.hasError('required') && registerForm.hasError('passwordMismatch')" class="alert alert-danger">
+                    Las contraseñas no coinciden.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="phoneNumber" class="form-label">Número de teléfono</label>
+                <input type="tel" class="form-control" id="phoneNumber" formControlName="phoneNumber">
+                <p class="x-small">Solo teléfonos españoles</p>
+                <div id="err-phone-required" *ngIf="!registerForm.get('phoneNumber')?.pristine && registerForm.get('phoneNumber')?.hasError('required')" class="alert alert-danger">
+                    El número de teléfono es requerido.
+                </div>
+                <div id="err-phone-notvalid" *ngIf="!registerForm.get('phoneNumber')?.pristine && registerForm.get('phoneNumber')?.hasError('phoneNumber')" class="alert alert-danger">
+                    El número de teléfono no es válido.
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+                <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Registrarse</button>
+                <a routerLink="/login">¿Estás registrado?</a>
+            </div>
+
+            <div *ngIf="serverErrorMessage" class="alert alert-danger">
+                {{ serverErrorMessage }}
+            </div>
+        </form>
+    </div>
+</div>

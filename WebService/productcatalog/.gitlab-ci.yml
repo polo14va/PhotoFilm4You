@@ -1,0 +1,35 @@
+#Configuración específica para el proyecto productcatalog en WebService
+compilarProductCatalog:
+  image: maven:3.9.3-eclipse-temurin-17
+  stage: compilar
+  script:
+    - echo "Compilando el backend - WebService/productcatalog"
+    - cd WebService/productcatalog
+    - mvn clean install -DskipTests
+    - cd ../../
+  artifacts:
+    paths:
+      - WebService/productcatalog/target/productcatalog-*.jar
+  allow_failure: true
+
+pruebasAutomaticasProductCatalog:
+  stage: pruebasAutomaticas
+  image: maven:3.9.3-eclipse-temurin-17
+  script:
+    - echo "Ejecutando pruebas automáticas del backend - WebService/productcatalog"
+    - cd WebService/productcatalog
+    - mvn test $CUSTOM_PROPERTIES_MVN_PRODUCT
+    - cd ../../
+  allow_failure: true
+
+sonarProductCatalog:
+  stage: sonarQube
+  image: maven:3.9.3-eclipse-temurin-17
+  variables:
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
+  script:
+    - echo "Ejecutando SonarQube para photofilm4you/WebService/productcatalog"
+    - cd WebService/productcatalog
+    - mvn clean verify sonar:sonar $CUSTOM_PROPERTIES_MVN_PRODUCT -Dsonar.coverage.exclusions="**/generated-sources/**,**/target/**" $CUSTOM_PROPERTIES_SONAR_QUALITYGATE -Dsonar.projectName="PDS_2023_B5_WebService_productcatalog" -Dsonar.projectKey="PDS_2023_B5_WebService_productcatalog"
+    - cd ../../
+  allow_failure: true

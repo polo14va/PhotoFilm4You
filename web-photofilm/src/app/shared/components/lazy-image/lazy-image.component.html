@@ -1,0 +1,4 @@
+<div class="image-container" [ngClass]="{'loading': isLoading}">
+  <div *ngIf="isLoading" class="spinner"></div>
+  <img #imageElement class="lazy-image img-fluid" [src]="getSafeImageUrl(imageName)" alt="" [style.max-width.%]="40">
+</div>

@@ -1,0 +1,1087 @@
+{
+	"info": {
+		"_postman_id": "c49e88b7-3186-4a1c-8e50-19adcea96c4d",
+		"name": "Products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6965194"
+	},
+	"item": [
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "{productId}",
+					"item": [
+						{
+							"name": "get Product By Id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/products/:productId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										":productId"
+									],
+									"variable": [
+										{
+											"key": "productId",
+											"value": "<long>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/products/:productId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												":productId"
+											],
+											"variable": [
+												{
+													"key": "productId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dailyPrice\": \"<double>\",\n  \"brand\": \"<string>\",\n  \"model\": \"<string>\",\n  \"categoryName\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "remove Product",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/:productId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										":productId"
+									],
+									"variable": [
+										{
+											"key": "productId",
+											"value": "<long>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "No Content",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/products/:productId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												":productId"
+											],
+											"variable": [
+												{
+													"key": "productId"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "name",
+					"item": [
+						{
+							"name": "{productName}",
+							"item": [
+								{
+									"name": "get Products By Name",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/products/name/:productName",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												"name",
+												":productName"
+											],
+											"variable": [
+												{
+													"key": "productName",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/products/name/:productName",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"products",
+														"name",
+														":productName"
+													],
+													"variable": [
+														{
+															"key": "productName"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"dailyPrice\": \"<double>\",\n    \"brand\": \"<string>\",\n    \"model\": \"<string>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parent\": {\n        \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n      }\n    }\n  },\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"dailyPrice\": \"<double>\",\n    \"brand\": \"<string>\",\n    \"model\": \"<string>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parent\": {\n        \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n      }\n    }\n  }\n]"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "category",
+					"item": [
+						{
+							"name": "{categoryName}",
+							"item": [
+								{
+									"name": "get Products By Category",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/products/category/:categoryName",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												"category",
+												":categoryName"
+											],
+											"variable": [
+												{
+													"key": "categoryName",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/products/category/:categoryName",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"products",
+														"category",
+														":categoryName"
+													],
+													"variable": [
+														{
+															"key": "categoryName"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"dailyPrice\": \"<double>\",\n    \"brand\": \"<string>\",\n    \"model\": \"<string>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parent\": {\n        \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n      }\n    }\n  },\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"dailyPrice\": \"<double>\",\n    \"brand\": \"<string>\",\n    \"model\": \"<string>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parent\": {\n        \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n      }\n    }\n  }\n]"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "get All Products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/products/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"dailyPrice\": \"<double>\",\n    \"brand\": \"<string>\",\n    \"model\": \"<string>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parent\": {\n        \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n      }\n    }\n  },\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"dailyPrice\": \"<double>\",\n    \"brand\": \"<string>\",\n    \"model\": \"<string>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parent\": {\n        \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n      }\n    }\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"categoryId\": \"<long>\",\n  \"dailyPrice\": \"<double>\",\n  \"brand\": \"<string>\",\n  \"model\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"categoryId\": \"<long>\",\n  \"dailyPrice\": \"<double>\",\n  \"brand\": \"<string>\",\n  \"model\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/products",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "<long>"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "items",
+			"item": [
+				{
+					"name": "{serialNumber}",
+					"item": [
+						{
+							"name": "operational",
+							"item": [
+								{
+									"name": "set Operational",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<boolean>",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/items/:serialNumber/operational",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"items",
+												":serialNumber",
+												"operational"
+											],
+											"variable": [
+												{
+													"key": "serialNumber",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "<boolean>",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/items/:serialNumber/operational",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"items",
+														":serialNumber",
+														"operational"
+													],
+													"variable": [
+														{
+															"key": "serialNumber"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"serialNumber\": \"<string>\",\n  \"status\": \"OPERATIONAL\",\n  \"product\": {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"dailyPrice\": \"<double>\",\n    \"brand\": \"<string>\",\n    \"model\": \"<string>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parent\": {\n        \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n      }\n    }\n  }\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "get Item By Id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/items/:serialNumber",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"items",
+										":serialNumber"
+									],
+									"variable": [
+										{
+											"key": "serialNumber",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/items/:serialNumber",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"items",
+												":serialNumber"
+											],
+											"variable": [
+												{
+													"key": "serialNumber"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"serialNumber\": \"<string>\",\n  \"status\": \"OPERATIONAL\",\n  \"product\": {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"dailyPrice\": \"<double>\",\n    \"brand\": \"<string>\",\n    \"model\": \"<string>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"parent\": {\n        \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n      }\n    }\n  }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "get All Items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/items/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"items",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/items/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"items",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"serialNumber\": \"<string>\",\n    \"status\": \"NON_OPERATIONAL\",\n    \"product\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dailyPrice\": \"<double>\",\n      \"brand\": \"<string>\",\n      \"model\": \"<string>\",\n      \"category\": {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parent\": {\n          \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n        }\n      }\n    }\n  },\n  {\n    \"serialNumber\": \"<string>\",\n    \"status\": \"NON_OPERATIONAL\",\n    \"product\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dailyPrice\": \"<double>\",\n      \"brand\": \"<string>\",\n      \"model\": \"<string>\",\n      \"category\": {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parent\": {\n          \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n        }\n      }\n    }\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "create Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productId\": \"1\",\n  \"serialNumber\": \"aasd\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/items",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"productId\": \"<long>\",\n  \"serialNumber\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/items",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"items"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "<string>"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "parent",
+					"item": [
+						{
+							"name": "{parentId}",
+							"item": [
+								{
+									"name": "get Categories By Parent",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/categories/parent/:parentId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"categories",
+												"parent",
+												":parentId"
+											],
+											"variable": [
+												{
+													"key": "parentId",
+													"value": "<long>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/categories/parent/:parentId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"categories",
+														"parent",
+														":parentId"
+													],
+													"variable": [
+														{
+															"key": "parentId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"parent\": {\n      \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n    }\n  },\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"parent\": {\n      \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n    }\n  }\n]"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "name",
+					"item": [
+						{
+							"name": "{name}",
+							"item": [
+								{
+									"name": "get Category By Name",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/categories/name/:name",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"categories",
+												"name",
+												":name"
+											],
+											"variable": [
+												{
+													"key": "name",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/categories/name/:name",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"categories",
+														"name",
+														":name"
+													],
+													"variable": [
+														{
+															"key": "name"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"parent\": {\n    \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n  }\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "description",
+					"item": [
+						{
+							"name": "{description}",
+							"item": [
+								{
+									"name": "get Categories By Description",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/categories/description/:description",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"categories",
+												"description",
+												":description"
+											],
+											"variable": [
+												{
+													"key": "description",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/categories/description/:description",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"categories",
+														"description",
+														":description"
+													],
+													"variable": [
+														{
+															"key": "description"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"parent\": {\n      \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n    }\n  },\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"parent\": {\n      \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n    }\n  }\n]"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/categories/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categories/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categories",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"parent\": {\n      \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n    }\n  },\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"parent\": {\n      \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n    }\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "create Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"parentId\": 1,\n    \"name\": \"Cámaras de Fotos\",\n    \"description\": \"Cámaras de Fotos\"\n}\n",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"parentId\": \"<long>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/categories",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "<long>"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:18081"
+		}
+	]
+}

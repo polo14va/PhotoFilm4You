@@ -1,0 +1,50 @@
+<div class="container my-3" *ngIf="user">
+  <h2>Preferencias de Usuario</h2>
+  <form class="form-group" (ngSubmit)="updateUser()">
+    <!-- Nombre completo -->
+    <div class="mb-3">
+      <label for="fullName" class="form-label">Nombre Completo</label>
+      <input class="form-control" type="text" id="fullName" [(ngModel)]="user.fullName" name="fullName" required>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label me-3">Email:</label>
+      <label class="form-label">{{user.email}}</label>
+    </div>
+
+    <label for="email" class="form-label me-3 mb-5">Enviar email para cambio de contraseña </label>
+    <button class="btn btn-primary" (click)="navigateToChangePassword()">Enviar Email</button>
+
+    <!-- Teléfono -->
+    <div class="mb-3">
+      <label for="phoneNumber" class="form-label">Teléfono</label>
+      <input class="form-control" type="tel" id="phoneNumber" [(ngModel)]="user.phoneNumber" name="phoneNumber">
+    </div>
+
+    <!-- Dirección -->
+    <div class="mb-3">
+      <label for="address" class="form-label">Dirección</label>
+      <input class="form-control" type="text" id="address" [ngModel]="user.address" name="address">
+    </div>
+
+    <!-- Ciudad -->
+    <div class="mb-3">
+      <label for="city" class="form-label">Ciudad</label>
+      <input class="form-control" type="text" id="city" [ngModel]="user.city" name="city">
+    </div>
+
+    <!-- Preferencias de Notificaciones -->
+    <div class="mb-3 form-check">
+
+      <input type="checkbox" class="form-check-input" id="notificationPreferences"
+      name="notificationPreferences">
+      <label class="form-check-label" for="notificationPreferences">Deseo recibir notificaciones</label>
+    </div>
+
+    <!-- Botón para actualizar -->
+    <button class="btn btn-primary" type="submit">Actualizar</button>
+  </form>
+
+
+</div>

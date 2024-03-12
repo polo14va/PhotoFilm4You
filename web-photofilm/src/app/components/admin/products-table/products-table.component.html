@@ -1,0 +1,32 @@
+<div class="card px-1 bg-dark">
+    <div class="text-center text-white mt-2">
+        <h4>Detalles de los productos actuales</h4>
+    </div>
+    <div>
+        <table class="table table-sm table-striped table-bordered my-1">
+            <caption class="text-white text-end">Tabla que muestra los detalles de las productos actuales</caption>
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">id</th>
+                    <th scope="col">nombre</th>
+                    <th scope="col">descripción</th>
+                    <th scope="col">precio diario</th>
+                    <th scope="col">marca</th>
+                    <th scope="col">modelo</th>
+                    <th scope="col">categoria</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.dailyPrice }}</td>
+                    <td>{{ product.brand }}</td>
+                    <td>{{ product.model }}</td>
+                    <td>{{ product.categoryId }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

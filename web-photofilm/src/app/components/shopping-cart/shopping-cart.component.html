@@ -1,0 +1,58 @@
+<div class="container mt-4">
+  <h2>Tu Carrito de Compras</h2>
+  <div *ngIf="cartProducts?.length === 0">
+    <p>Tu carrito está vacío.</p>
+  </div>
+  <div *ngIf="cartProducts?.length !== 0">
+    <div class="row">
+      <div class="col-md-8">
+        <ul class="list-group mb-3">
+          <li class="list-group-item" *ngFor="let item of cartProducts">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="lazy-image-container">
+                  <app-lazy-image [imageName]="(item.product.name.replaceAll(' ', '_') + '.png') || 'notfound.svg'"></app-lazy-image>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="row">
+                  <h5>{{ item.product.name }}</h5>
+                  <div class="col-12">
+                    <p>{{ item.product.description }}</p>
+                  </div>
+                  <div class="col-12">
+                    <p class="">Precio unidad: {{ item.product.dailyPrice | currency: 'EUR':'' }} €</p>
+                    <p class="text-muted">IVA: {{ item.tax | currency: 'EUR':'' }} €</p>
+
+                    <div class="d-flex" >
+                      <label for="'quantity" class="mr-1 mt-2 col-2">Cantidad:</label>
+                      <input type="number" id="quantity" class="form-control  mb-2 col-1" name="quantity" min="0" value="{{ item.quantity }}" class="form-control mr-2" #inputQuantity>
+                      <button buttontype="button" class="btn btn-primary col-6" (click) ="updateQty(item.rentId, inputQuantity.value)">Modificar la cantidad</button>
+                    </div>
+
+                    <p class=""><strong>Precio:</strong> {{ (item.product.dailyPrice + item.tax) * item.quantity | currency: 'EUR':'' }} €</p>
+                    <button buttontype="button" class="btn btn-primary" (click)="deleteProductFromCart(item.rentId)">Eliminar producto</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Resumen del Carrito</h4>
+            <p class="card-text">IVA: {{ getTotalAmount() * 0.21 | currency: 'EUR':'' }} €</p>
+            <h5 class="card-text">Total: {{ getTotalAmount() * 1.21 | currency: 'EUR':'' }} €</h5>
+            <button class="btn btn-primary" (click)="proceedToCheckout()">Proceder al Pago</button>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

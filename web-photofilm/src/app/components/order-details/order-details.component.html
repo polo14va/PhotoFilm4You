@@ -1,0 +1,45 @@
+<div class="container mt-4">
+    <h2>Tu Carrito de Compras</h2>
+    <div *ngIf="orderProducts?.length === 0">
+      <p>Tu carrito está vacío.</p>
+    </div>
+    <div *ngIf="orderProducts?.length !== 0">
+      <div class="row">
+        <div class="col-md-7">
+          <ul class="list-group mb-3">
+            <li class="list-group-item" *ngFor="let item of orderProducts">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="lazy-image-container">
+                    <app-lazy-image [imageName]="(item.product.name.replaceAll(' ', '_') + '.png') || 'notfound.svg'"></app-lazy-image>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="row">
+                    <h5>{{ item.product.name }}</h5>
+                    <div class="col-12">
+                      <p>{{ item.product.description }}</p>
+                    </div>
+                    <div class="col-12">
+                      <p class="">Precio unidad: {{ item.product.dailyPrice | currency: 'EUR':'' }} €</p>
+                      <p class="text-muted">IVA: {{ item.tax | currency: 'EUR':'' }} €</p>
+                      <p>Cantidad: {{item.quantity}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Resumen del Pedido</h4>
+                <p class="card-text">IVA: {{ getTotalAmount() * 0.21 | currency: 'EUR':'' }} €</p>
+                <h5 class="card-text">Total: {{ getTotalAmount() | currency: 'EUR':'' }} €</h5>
+    
+              </div>
+            </div>
+         </div>
+      </div>
+  </div>

@@ -1,0 +1,49 @@
+.app-login {
+  width: 100%; /* Ocupa todo el ancho disponible dentro de modal-content */
+  max-width: 100%; /* Evita que app-login se desborde */
+}
+
+.modal {
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+}
+
+.modal-dialog {
+  width: 100%; /* Establece el ancho deseado para modal-content */
+  background-color: transparent;
+}
+
+.modal-content {
+  background-color: transparent;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+  z-index: 9999;
+}
+
+.close-button:hover {
+  color: #7a2929;
+}
+

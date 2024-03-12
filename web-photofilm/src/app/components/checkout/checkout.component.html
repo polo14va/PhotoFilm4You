@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h2>Proceso de Pago</h2>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Resumen de la Compra</h4>
+      <p>El total es de {{totalAmount * 1.21}} EUROS</p>
+      <button buttontype="button" class="btn btn-primary" (click)="proceedToPay()">Proceder al pago</button>
+      <br />
+      <br />
+      <br />
+      <div id="paypal-button-container">
+      </div>
+  </div>
+
+  <!-- Mensaje de error o confirmación -->
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+
+
+</div>

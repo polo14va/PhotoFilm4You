@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="card-header">
+    <!-- Header text -->
+    Login
+  </div>
+  <div class="card-body">
+    <!-- Conditional rendering: Login form or logout button -->
+    <ng-container *ngIf="!isLoggedIn; else logoutButton">
+      <!-- Login Form -->
+      <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+        <!-- Email Field -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input formControlName="email" type="email" class="form-control" placeholder="Enter your email" required>
+          <!-- Email Error Message -->
+          <div *ngIf="loginForm.get('email')?.errors && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)" class="alert alert-danger">
+            Invalid email.
+          </div>
+        </div>
+        <!-- Password Field -->
+        <div class="mb-5">
+          <label for="password" class="form-label">Password</label>
+          <input formControlName="password" type="password" class="form-control" placeholder="Enter your password" required>
+          <!-- Password Error Message -->
+          <div *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)" class="alert alert-danger">
+            Password must be at least 8 characters long, including an uppercase letter, a lowercase letter, and a number.
+          </div>
+        </div>
+        <!-- Action Buttons -->
+        <div class="d-flex justify-content-between align-items-center">
+          <button type="submit" class="btn btn-primary">Login</button>
+          <a routerLink="/register">¿Quieres registrarte?</a>
+          <a routerLink="/password">¿No recuerdas tu contraseña?</a>
+        </div>
+      </form>
+      <!-- Login Error Message -->
+      <div *ngIf="loginError && !emailSent" class="alert alert-danger">
+        {{ loginError }}
+        <button class="btn btn-sm btn-outline-secondary" *ngIf="loginError.includes('Account not validated')" (click)="resendConfirmation()">Resend Confirmation Email</button>
+      </div>
+      <span *ngIf="emailSent">Confirmation email has been sent!</span>
+    </ng-container>
+
+    <!-- Logout Button -->
+    <ng-template #logoutButton>
+      <button (click)="logout()" class="btn btn-danger">Logout</button>
+    </ng-template>
+  </div>
+</div>

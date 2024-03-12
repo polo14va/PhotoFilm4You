@@ -1,0 +1,18 @@
+.search-results {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,.1);
+  border-radius: 0.25rem;
+  top: 100%; /* Asegúrate de que esté justo debajo del input */
+  margin-top: 0.5rem; /* Ajusta este valor según sea necesario */
+}
+
+.search-results .list-group-item:hover {
+  background-color: #f8f9fa; /* Cambia el color de fondo al pasar el ratón */
+  cursor: pointer; /* Cambia el cursor a una mano para indicar que es clickeable */
+}
+

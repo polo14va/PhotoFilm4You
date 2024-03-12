@@ -1,0 +1,44 @@
+services:
+  - name: docker:dind
+    alias: docker
+  - name: postgres:latest
+    alias: productdb
+    variables:
+      POSTGRES_DB: product
+      POSTGRES_USER: product
+      POSTGRES_PASSWORD: product
+
+stages:
+  - getCodigo
+  - compilar
+  #- construirImagenes
+  - pruebasAutomaticas
+  - sonarQube
+
+variables:
+  SONAR_HOST_URL: "http://pdp-pds-sq.uoclabs.uoc.es/"
+  SONAR_TOKEN: "0d792c069be654241d2bf8a071406d8148f28dd2"
+  MAVEN_OPTS: "--add-opens java.base/java.lang=ALL-UNNAMED"
+  GIT_DEPTH: "0"
+  CUSTOM_PROPERTIES_SONAR_QUALITYGATE: -Dsonar.qualitygate.wait=true
+  M2_HOME: "$CI_PROJECT_DIR/.m2"
+  DOCKER_HOST: "tcp://docker:2375"
+  DOCKER_DRIVER: overlay2
+  DOCKER_CUSTOM_IMAGE_NAME_USER: "${CI_REGISTRY_IMAGE}/user"
+  DOCKER_CUSTOM_IMAGE_NAME_PRODUCT: "${CI_REGISTRY_IMAGE}/product"
+  DOCKER_CUSTOM_IMAGE_NAME_NOTIFICATION: "${CI_REGISTRY_IMAGE}/notification"
+  CUSTOM_PROPERTIES_MVN_PRODUCT: -Dspring.datasource.url=jdbc:postgresql://productdb:5432/product
+
+include:
+  - local: 'WebService/notification/.gitlab-ci.yml'
+  - local: 'WebService/productcatalog/.gitlab-ci.yml'
+  - local: 'WebService/user/.gitlab-ci.yml'
+  - local: 'web-photofilm/.gitlab-ci.yml'
+
+getCodigo:
+  stage: getCodigo
+  script:
+    - echo "Obteniendo las ramas del proyecto."
+    - git checkout $CI_COMMIT_REF_NAME
+    - echo "La rama actual es $CI_COMMIT_REF_NAME"
+  allow_failure: false

@@ -1,0 +1,13 @@
+.lazy-image-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 200px; /* Altura fija para el contenedor */
+    width: 100%; /* Asegúrate de que el contenedor tome todo el ancho disponible */
+  }
+  
+  .lazy-image {
+    max-width: 100%; /* El ancho máximo de la imagen es el 100% del contenedor */
+    max-height: 100%; /* Altura máxima para mantener la relación de aspecto */
+    object-fit: contain; /* Mantiene la relación de aspecto sin recortar la imagen */
+  }

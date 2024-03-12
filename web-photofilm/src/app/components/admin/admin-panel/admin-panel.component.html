@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-4 col-xl-2 px-sm-1 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center px-3 pt-3 text-white min-vh-100">
+                <strong class="d-flex align-items-center pb-3 mb-md-0 text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Admin</span>
+                </strong>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start d-grid " id="menu">
+                    <li class="nav-item border border rounded btn btn-sm btn-dark" routerLinkActive="active-link">
+                        <a routerLink="/admin/new-category" class="nav-link align-middle">
+                            <span class="text-white ms-1 d-none d-sm-inline">nueva categoria</span>
+                        </a>
+                    </li>
+                    <li class="nav-item border border rounded btn btn-sm btn-dark" routerLinkActive="active-link">
+                        <a routerLink="/admin/new-product" class="nav-link align-middle">
+                            <span class="text-white ms-1 d-none d-sm-inline">nuevo producto</span>
+                        </a>
+                    </li>
+                    <li class="nav-item border border rounded btn btn-sm btn-dark" routerLinkActive="active-link">
+                        <a routerLink="/admin/update-product" class="nav-link align-middle">
+                            <span class="text-white ms-1 d-none d-sm-inline">actualizar/eliminar producto</span>
+                        </a>
+                    </li>
+                    <li class="nav-item border border rounded btn btn-sm btn-dark" routerLinkActive="active-link">
+                        <a routerLink="/admin/update-product-stock" class="nav-link align-middle">
+                            <span class="text-white ms-1 d-none d-sm-inline">actualizar stock producto</span>
+                        </a>
+                    </li>
+                    <li class="nav-item border border rounded btn btn-sm btn-dark" routerLinkActive="active-link">
+                        <a routerLink="/admin/add-admin" class="nav-link align-middle">
+                            <span class="text-white ms-1 d-none d-sm-inline">añadir administrador</span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+            </div>
+        </div>
+        <div class="col py-3">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

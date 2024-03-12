@@ -1,0 +1,49 @@
+# Configuración específica para el proyecto notification en WebService
+# compilarNotification:
+#   image: maven:3.9.3-eclipse-temurin-17
+#   stage: compilar
+#   script:
+#     - echo "Compilando el backend - WebService/notification"
+#     - cd WebService/notification
+#     - mvn clean install -DskipTests
+#     - cd ../../
+#   artifacts:
+#     paths:
+#       - WebService/notification/target/notification-*.jar
+#   allow_failure: true
+
+compilarNotification:
+  image: maven:3.9.3-eclipse-temurin-17
+  stage: compilar
+  script:
+    - echo "Copiando los archivos JAR compilados a WebService/notification/target/"
+    - mkdir -p WebService/notification/target/  # Crear el directorio si no existe
+    - cp WebService/Compile/*.jar WebService/notification/target/
+  artifacts:
+    paths:
+      - WebService/notification/target/*.jar
+  allow_failure: true
+
+
+pruebasAutomaticasNotification:
+  image: maven:3.9.3-eclipse-temurin-17
+  stage: pruebasAutomaticas
+  script:
+    - echo "Ejecutando pruebas automáticas del backend - WebService/notification"
+    - cd WebService/notification
+    - mvn test
+    - cd ../../
+  allow_failure: true
+
+sonarNotification:
+  stage: sonarQube
+  image: maven:3.9.3-eclipse-temurin-17
+  variables:
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
+  script:
+    - echo "Ejecutando SonarQube para photofilm4you/WebService/notification"
+    - cd WebService/notification
+    - | 
+      mvn clean verify sonar:sonar -Dsonar.coverage.exclusions="**/generated-sources/**,**/target/**" $CUSTOM_PROPERTIES_SONAR_QUALITYGATE -Dsonar.projectName="PDS_2023_B5_WebService_notification" -Dsonar.projectKey="PDS_2023_B5_WebService_notification"
+    - cd ../../
+  allow_failure: true

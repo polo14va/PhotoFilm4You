@@ -1,0 +1,699 @@
+{
+	"info": {
+		"_postman_id": "79b727ed-4416-459c-a70d-eca8c27a9a26",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6965194"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "{userId}",
+					"item": [
+						{
+							"name": "get User By Id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "<long>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/users/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"fullName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "toAlert",
+					"item": [
+						{
+							"name": "get Users To Alert",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/toAlert?productId=<long>&availableOnDate=<date>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"toAlert"
+									],
+									"query": [
+										{
+											"key": "productId",
+											"value": "<long>",
+											"description": "(Required) "
+										},
+										{
+											"key": "availableOnDate",
+											"value": "<date>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/users/toAlert?productId=<long>&availableOnDate=<date>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												"toAlert"
+											],
+											"query": [
+												{
+													"key": "productId",
+													"value": "<long>",
+													"description": "(Required) "
+												},
+												{
+													"key": "availableOnDate",
+													"value": "<date>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<long>\",\n    \"fullName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"fullName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"fullName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"fullName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fullName\": \"prueba\",\n  \"email\": \"prueba@pruena.co\",\n  \"password\": \"123\",\n  \"phoneNumber\": \"654987789\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"fullName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\",\n  \"phoneNumber\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "<long>"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "alerts",
+			"item": [
+				{
+					"name": "{alertId}",
+					"item": [
+						{
+							"name": "get Alert By Id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/alerts/:alertId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"alerts",
+										":alertId"
+									],
+									"variable": [
+										{
+											"key": "alertId",
+											"value": "<long>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/alerts/:alertId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"alerts",
+												":alertId"
+											],
+											"variable": [
+												{
+													"key": "alertId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"from\": \"<date>\",\n  \"to\": \"<date>\",\n  \"productId\": \"<long>\",\n  \"user\": {\n    \"id\": \"<long>\",\n    \"fullName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "{userId}",
+							"item": [
+								{
+									"name": "get Alerts By User And Date Interval",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/alerts/user/:userId?fromDate=<date>&toDate=<date>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"alerts",
+												"user",
+												":userId"
+											],
+											"query": [
+												{
+													"key": "fromDate",
+													"value": "<date>",
+													"description": "(Required) "
+												},
+												{
+													"key": "toDate",
+													"value": "<date>",
+													"description": "(Required) "
+												}
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "<long>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/alerts/user/:userId?fromDate=<date>&toDate=<date>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"alerts",
+														"user",
+														":userId"
+													],
+													"query": [
+														{
+															"key": "fromDate",
+															"value": "<date>",
+															"description": "(Required) "
+														},
+														{
+															"key": "toDate",
+															"value": "<date>",
+															"description": "(Required) "
+														}
+													],
+													"variable": [
+														{
+															"key": "userId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"id\": \"<long>\",\n    \"from\": \"<date>\",\n    \"to\": \"<date>\",\n    \"productId\": \"<long>\",\n    \"user\": {\n      \"id\": \"<long>\",\n      \"fullName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"password\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    }\n  },\n  {\n    \"id\": \"<long>\",\n    \"from\": \"<date>\",\n    \"to\": \"<date>\",\n    \"productId\": \"<long>\",\n    \"user\": {\n      \"id\": \"<long>\",\n      \"fullName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"password\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    }\n  }\n]"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "product",
+					"item": [
+						{
+							"name": "{productId}",
+							"item": [
+								{
+									"name": "get Alerts By Product And Date",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/alerts/product/:productId?alertDate=<date>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"alerts",
+												"product",
+												":productId"
+											],
+											"query": [
+												{
+													"key": "alertDate",
+													"value": "<date>",
+													"description": "(Required) "
+												}
+											],
+											"variable": [
+												{
+													"key": "productId",
+													"value": "<long>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/alerts/product/:productId?alertDate=<date>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"alerts",
+														"product",
+														":productId"
+													],
+													"query": [
+														{
+															"key": "alertDate",
+															"value": "<date>",
+															"description": "(Required) "
+														}
+													],
+													"variable": [
+														{
+															"key": "productId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"id\": \"<long>\",\n    \"from\": \"<date>\",\n    \"to\": \"<date>\",\n    \"productId\": \"<long>\",\n    \"user\": {\n      \"id\": \"<long>\",\n      \"fullName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"password\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    }\n  },\n  {\n    \"id\": \"<long>\",\n    \"from\": \"<date>\",\n    \"to\": \"<date>\",\n    \"productId\": \"<long>\",\n    \"user\": {\n      \"id\": \"<long>\",\n      \"fullName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"password\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    }\n  }\n]"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "get All Alerts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/alerts/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"alerts",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/alerts/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"alerts",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"from\": \"<date>\",\n    \"to\": \"<date>\",\n    \"productId\": \"<long>\",\n    \"user\": {\n      \"id\": \"<long>\",\n      \"fullName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"password\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    }\n  },\n  {\n    \"id\": \"<long>\",\n    \"from\": \"<date>\",\n    \"to\": \"<date>\",\n    \"productId\": \"<long>\",\n    \"user\": {\n      \"id\": \"<long>\",\n      \"fullName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"password\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    }\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "create Alert",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productId\": \"1\",\n  \"userId\": \"1\",\n  \"from\": \"2023-01-01\",\n  \"to\": \"2023-06-01\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/alerts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"alerts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"productId\": \"<long>\",\n  \"userId\": \"<long>\",\n  \"from\": \"<date>\",\n  \"to\": \"<date>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/alerts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"alerts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "<long>"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:18082"
+		}
+	]
+}

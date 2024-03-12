@@ -1,0 +1,21 @@
+<div *ngIf="hasProduct()" class="product-card card col-md-12 mt-2">
+    <div class="card-body" height="500">
+        <app-lazy-image [imageName]="product?.imageName || 'notfound.svg'"></app-lazy-image>
+        <h2 class="card-title mb-4">{{ product?.name }}</h2>
+        <p class="card-text mb-4">{{ product?.description }}</p>
+        <p class="card-text mb-4"><strong>Price:</strong> {{ product?.dailyPrice | currency: 'EUR':'' }} €</p>
+        <p class="card-text mb-4"><strong>Cantidad Disponible: </strong>{{product?.quantityAvailable}}</p>
+        <div class="d-flex justify-content-center">
+            <div *ngIf="(product?.quantityAvailable || 0) > 0">
+                <a [routerLink]="['/shopping-cart', product!.id]" class="btn btn-primary m-2" (click)="addToCart($event)">Añadir al carrito</a>
+            </div>
+            <a [routerLink]="['/product', product!.id]" class="btn btn-secondary m-2">Detalles</a>
+
+            <button id="alert-btn" type="button" class="btn btn-link img-fluid btn-sm" (click)="addProductToAlerts()" [ngClass]="isButtonDisabled() ? 'd-none':''">
+            <img src="{{ hasAlertForProduct(product!.id) ? 'assets/alertOK.svg' : 'assets/alert.svg' }}" alt="Alert" class="img-fluid" [title]="hasAlertForProduct(product!.id) ? 'Alerta CREADA' : 'Subscribir alerta' ">
+        </button>
+
+
+
+        </div>
+    </div>

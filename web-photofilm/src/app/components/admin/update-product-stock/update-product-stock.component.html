@@ -1,0 +1,74 @@
+<div class="card px-1 bg-dark mb-3">
+    <div class="text-center text-white mt-2">
+        <h4>Añadir producto al stock</h4>
+    </div>
+    <div class="bg-white my-1 p-3">
+        <form [formGroup]="newProductToStockForm" (ngSubmit)="onSubmit()">
+            <div class="mb-1 align-middle">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-auto">
+                        <label for="">Producto:</label>
+                        <select class="form-select" name="productId" formControlName="productId" id="">
+                            <option *ngFor="let product of products" value="{{product.id}}">{{product.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-auto">
+                        <label for="">Referencia:</label>
+                        <input type="text" class="form-control" id="serialNumber" formControlName="serialNumber" placeholder="Ingrese la referéncia">
+                        <div *ngIf="!newProductToStockForm.get('serialNumber')?.pristine && newProductToStockForm.get('serialNumber')?.hasError('required')" class="alert alert-danger">
+                            Referencia requerida.
+                        </div>
+                    </div>
+                    <div class="col-md-auto text-end p-3">
+                        <!-- submit button -->
+                        <button type="submit" class="btn btn-primary" [disabled]="newProductToStockForm.invalid">Añadir</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card px-1 bg-dark">
+    <div class="text-center text-white mt-2">
+        <h4>Detalles del stock actuales</h4>
+    </div>
+    <div>
+        <table class="table table-sm table-striped align-middle text-center">
+            <caption>Tabla que muestra los detalles del stock actual</caption>
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">producto</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <th scope="col" class="col-md-1">{{ product.id }}</th>
+                    <th scope="col" class="col-md-2">{{product.name}}</th>
+                    <td colspan="3" class="col-md-6">
+                        <table class="table table-sm table-striped" *ngIf="groupedItems[product.id]">
+                            <caption></caption>
+                            <thead>
+                                <th scope="col">número de serie</th>
+                                <th scope="col">estado (clicar para cambiar estado)</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let itemGroup of groupedItems[product.id]">
+                                    <td>{{ itemGroup.serialNumber }}</td>
+                                    <td>
+                                        <button class="btn btn-sm" [ngClass]="{'btn-danger': itemGroup.status === 'NON_OPERATIONAL', 'btn-success': itemGroup.status === 'OPERATIONAL'}" (click)="setOperational(itemGroup)">
+                                    {{ itemGroup.status }}
+                                </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <span class="text-danger" *ngIf="!groupedItems[product.id]">No hay productos en stock</span>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

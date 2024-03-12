@@ -1,0 +1,98 @@
+[
+  {
+    "userId": 1,
+    "product": {
+      "id": 1,
+      "name": "Cámara Reflex Digital",
+      "description": "Cámara reflex de alta resolución con lente intercambiable.",
+      "dailyPrice": 799.99,
+      "brand": "Canon",
+      "model": "EOS 5D Mark IV",
+      "categoryId": 1001,
+      "imageName": "Canon_500D.png"
+    },
+    "quantity": 1,
+    "price": 799.99,
+    "tax": 120.00
+  },
+  {
+    "userId": 1,
+    "product": {
+      "id": 2,
+      "name": "Cámara Compacta de Bolsillo",
+      "description": "Cámara compacta fácil de usar, ideal para viajes.",
+      "dailyPrice": 299.99,
+      "brand": "Sony",
+      "model": "Cyber-shot DSC-RX100",
+      "categoryId": 1001,
+      "imageName": "Canon_EOS_R5_C.png"
+    },
+    "quantity": 2,
+    "price": 299.99,
+    "tax": 45.00
+  },
+  {
+    "userId": 1,
+    "product": {
+      "id": 3,
+      "name": "Cámara Mirrorless de Alta Definición",
+      "description": "Cámara mirrorless con sensor avanzado y grabación de video 4K.",
+      "dailyPrice": 999.99,
+      "brand": "Nikon",
+      "model": "Z6",
+      "categoryId": 1001,
+      "imageName": "Canon_EOS_R8.png"
+    },
+    "quantity": 1,
+    "price": 999.99,
+    "tax": 150.00
+  },
+  {
+    "userId": 1,
+    "product": {
+      "id": 4,
+      "name": "Cámara de Acción Resistente al Agua",
+      "description": "Ideal para deportes extremos y aventuras al aire libre, resistente al agua y a los golpes.",
+      "dailyPrice": 399.99,
+      "brand": "GoPro",
+      "model": "Hero8 Black",
+      "categoryId": 1001,
+      "imageName": ""
+    },
+    "quantity": 1,
+    "price": 399.99,
+    "tax": 60.00
+  },
+  {
+    "userId": 1,
+    "product": {
+      "id": 5,
+      "name": "Cámara Digital SLR con Pantalla Táctil",
+      "description": "Cámara SLR con controles intuitivos y pantalla táctil para una fácil operación.",
+      "dailyPrice": 549.99,
+      "brand": "Pentax",
+      "model": "K-70",
+      "categoryId": 1001,
+      "imageName": "Foco_Phillips_220L.png"
+    },
+    "quantity": 2,
+    "price": 549.99,
+    "tax": 82.50
+  },
+  {
+    "userId": 1,
+    "product": {
+      "id": 6,
+      "name": "Cámara Rangefinder de Película",
+      "description": "Cámara clásica rangefinder para entusiastas de la fotografía en película.",
+      "dailyPrice": 1200.00,
+      "brand": "Leica",
+      "model": "M3",
+      "categoryId": 1001,
+      "imageName": "Canon_EOS_R5_C.png"
+    },
+    "quantity": 1,
+    "price": 1200.00,
+    "tax": 180.00
+  }
+]

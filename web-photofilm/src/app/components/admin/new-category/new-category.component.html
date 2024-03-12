@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="row">
+        <!-- new category form -->
+        <div class="col">
+            <div class="container">
+                <div class=" card px-1 bg-dark">
+                    <div class="text-center text-white mt-2">
+                        <h4>Formulario para añadir una categoria nueva</h4>
+                    </div>
+                    <div class="bg-white my-1 p-3">
+                        <form [formGroup]="newCategoryForm" (ngSubmit)="onSubmit()">
+                            <div class="mb-1">
+                                <div class="row">
+                                    <!-- name -->
+                                    <div class="col-7">
+                                        <label for="name" class="form-label">Nombre:</label>
+                                        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Ingrese el nombre del producto">
+                                        <div *ngIf="!newCategoryForm.get('name')?.pristine && newCategoryForm.get('name')?.hasError('required')" class="alert alert-danger">
+                                            Nombre requerido.
+                                        </div>
+                                    </div>
+                                    <!-- parentId -->
+                                    <div class="col">
+                                        <label for="parentId" class="form-label">ID del padre:</label>
+                                        <input type="number" class="form-control" id="parentId" formControlName="parentId" min="0" value="0">
+                                        <div *ngIf="!newCategoryForm.get('parentId')?.pristine && newCategoryForm.get('parentId')?.hasError('required')" class="alert alert-danger">
+                                            Id requerido.
+                                        </div>
+                                        <div *ngIf="!newCategoryForm.get('parentId')?.pristine && !newCategoryForm.get('parentId')?.hasError('required') && newCategoryForm.get('parentId')?.hasError('pattern')" class="alert alert-danger">
+                                            Id >= 0.
+                                        </div>
+                                        <p class="px-2 x-small text-end">0 significa categoria principal</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- description -->
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Descripción:</label>
+                                <input type="text" class="form-control" id="description" formControlName="description" placeholder="Descripción del producto">
+                                <div *ngIf="!newCategoryForm.get('description')?.pristine && newCategoryForm.get('description')?.hasError('required')" class="alert alert-danger">
+                                    Descripción requerida.
+                                </div>
+                            </div>
+                            <!-- submit button -->
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary" [disabled]="newCategoryForm.invalid">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- details actual categories -->
+        <div class="col">
+            <div class="container">
+                <div>
+                    <app-category-details></app-category-details>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

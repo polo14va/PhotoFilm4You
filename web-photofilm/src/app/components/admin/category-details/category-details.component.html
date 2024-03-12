@@ -1,0 +1,26 @@
+<div class="card px-1 bg-dark">
+    <div class="text-center text-white mt-2">
+        <h4>Detalles de las categorias actuales</h4>
+    </div>
+    <div>
+        <table class="table table-sm table-striped table-bordered my-1">
+            <caption class="text-white text-end">Tabla que muestra los detalles de las categorias actuales</caption>
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">id</th>
+                    <th scope="col">nombre</th>
+                    <th scope="col">descripción</th>
+                    <th scope="col">id padre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let category of categories">
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.description }}</td>
+                    <td class="text-end">{{ category.parentId !== null ? category.parentId : '-' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

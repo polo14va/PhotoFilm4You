@@ -1,0 +1,15 @@
+<div class="card product-retail-card">
+    <div *ngIf="product" class="product-detail text-center">
+        <h2 class="product-title">{{ product.name }}</h2>
+        <app-lazy-image [imageName]="product!.imageName || 'notfound.png'" class="product-image product-image-max-width"></app-lazy-image>
+        <div class="text-left">
+            <p class="product-description">{{ product.description }}</p>
+            <p class="product-price"><strong>Price:</strong> {{ product.dailyPrice | currency }}</p>
+            <p class="product-price"><strong>Marca:</strong> {{ product.brand }}</p>
+            <p class="product-price"><strong>Modelo:</strong> {{ product.model }}</p>
+        </div>
+    </div>
+    <div class="text-center mt-3 mb-4">
+       <a routerLink="/catalog" class="btn btn-primary">Volver al Catálogo</a>
+    </div>
+</div>

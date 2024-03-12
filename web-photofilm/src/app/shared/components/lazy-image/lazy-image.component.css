@@ -1,0 +1,32 @@
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #007bff; /* Color del spinner (en este caso, azul) */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite; /* Animación del spinner */
+  margin: 0 auto; /* Centra el spinner horizontalmente */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.image-container.loading {
+  position: relative;
+}
+
+.image-container.loading .spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* Estilos adicionales para el contenedor de la imagen */
+.image-container img {
+  max-width: 100%; /* Ajusta el ancho de la imagen al contenedor */
+  display: block; /* Elimina cualquier espacio adicional debajo de la imagen */
+}

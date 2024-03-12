@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="row">
+        <!-- new category form -->
+        <div class="col">
+            <div class="container">
+                <div class=" card px-1 bg-dark">
+                    <div class="text-center text-white mt-2">
+                        <h4>Formulario para añadir un producto nuevo</h4>
+                    </div>
+                    <div class="bg-white my-1 p-3">
+                        <form [formGroup]="newProductForm" (ngSubmit)="onSubmit()">
+                            <div class="mb-1">
+                                <div class="row">
+                                    <!-- name -->
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Nombre:</label>
+                                        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Ingrese el nombre del producto">
+                                        <div *ngIf="!newProductForm.get('name')?.pristine && newProductForm.get('name')?.hasError('required')" class="alert alert-danger">
+                                            Nombre requerido.
+                                        </div>
+                                    </div>
+                                    <!-- brand -->
+                                    <div class="mb-3">
+                                        <label for="brand" class="form-label">Marca:</label>
+                                        <input type="text" class="form-control" id="brand" formControlName="brand" placeholder="Ingrese la marca del producto">
+                                        <div *ngIf="!newProductForm.get('brand')?.pristine && newProductForm.get('brand')?.hasError('required')" class="alert alert-danger">
+                                            Marca requerida.
+                                        </div>
+                                    </div>
+                                    <!-- model -->
+                                    <div class="mb-3">
+                                        <label for="model" class="form-label">Modelo:</label>
+                                        <input type="text" class="form-control" id="model" formControlName="model" placeholder="Ingrese el modelo del producto">
+                                        <div *ngIf="!newProductForm.get('model')?.pristine && newProductForm.get('model')?.hasError('required')" class="alert alert-danger">
+                                            Marca requerida.
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <label for="categoryId" class="form-label">Id de la categoria:</label>
+                                            <input type="number" class="form-control" id="categoryId" formControlName="categoryId" min="0">
+                                            <div *ngIf="!newProductForm.get('categoryId')?.pristine && newProductForm.get('categoryId')?.hasError('required')" class="alert alert-danger">
+                                                Categoria requerida.
+                                            </div>
+                                            <div *ngIf="!newProductForm.get('categoryId')?.pristine && !newProductForm.get('categoryId')?.hasError('required') && newProductForm.get('categoryId')?.hasError('pattern')" class="alert alert-danger">
+                                                Id > 0.
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <label for="dailyPrice" class="form-label">Precio diario (€/dia):</label>
+                                            <input type="number" class="form-control" id="dailyPrice" formControlName="dailyPrice" min="0">
+                                            <div *ngIf="!newProductForm.get('dailyPrice')?.pristine && newProductForm.get('dailyPrice')?.hasError('required')" class="alert alert-danger">
+                                                Precio requerido.
+                                            </div>
+                                            <div *ngIf="!newProductForm.get('dailyPrice')?.pristine && !newProductForm.get('dailyPrice')?.hasError('required') && newProductForm.get('dailyPrice')?.hasError('pattern')" class="alert alert-danger">
+                                                Precio entre 0 y 999.99
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- description -->
+                            <div class="mb-3">
+                                <div class="col-auto">
+                                    <label for="description" class="form-label">Descripción:</label>
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" id="description" formControlName="description" placeholder="Descripción del producto">
+                                    <div *ngIf="!newProductForm.get('description')?.pristine && newProductForm.get('description')?.hasError('required')" class="alert alert-danger">
+                                        Descripción requerida.
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- submit button -->
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary" [disabled]="newProductForm.invalid">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- details actual products -->
+        <div class="col">
+            <div class="container">
+                <div>
+                    <app-products-table></app-products-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

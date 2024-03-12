@@ -1,0 +1,77 @@
+<div class="bg-light border-bottom">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light container">
+    <a class="navbar-brand" href="/">
+      <img src="assets/logo.png" alt="Logo" height="50">
+    </a>
+
+    <!-- Toggle Button for Small Screens -->
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch"
+      aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">
+      <img src="assets/search.svg" alt="Search">
+    </button>
+
+    <!-- Navbar Collapse for Search -->
+    <div class="" id="navbarSearch">
+      <form class="w-100 input-group me-5">
+        <input class="form-control w-50" type="search" placeholder="Buscar" aria-label="Buscar" [(ngModel)]="searchTerm"
+          [ngModelOptions]="{standalone: true}" (input)="search(searchTerm)" (blur)="hideSearchResults()">
+
+        <span class="btn btn-outline-secondary pe-none">
+          <img src="assets/search.svg" alt="Buscar">
+        </span>
+      </form>
+      <div *ngIf="showResults && searchResults.length" class="search-results">
+        <ul class="list-group">
+          <li *ngFor="let product of searchResultsFiltered" class="list-group-item" (click)="goToProduct(product.id)">
+            {{ product.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <ul class="navbar-nav me-auto ms-3">
+      <li class="nav-item btn btn-sm btn-outline-secondary me-1">
+        <a class="nav-link" href="/catalog">
+          <img src="assets/catalog.svg" width="25px" alt="Carrito" class="me-1"><strong>CATÁLOGO</strong> 
+          </a>
+      </li>
+      <li class="nav-item btn btn-sm btn-outline-secondary me-1">
+        <a class="nav-link" href="/orders">
+          <img src="assets/box.svg" width="25px" alt="Carrito" class="me-1"><strong>PEDIDOS</strong>
+        </a>
+      </li>
+      <li class="nav-item btn btn-sm btn-outline-secondary me-1">
+        <a class="nav-link" href="/shopping-cart">
+          <img src="assets/cart.svg" width="25px" alt="Carrito" class="me-1"><strong>CARRITO</strong> 
+        </a>
+      </li>
+    </ul>
+
+
+    <div class="d-flex align-items-right position-relative">
+      <div *ngIf="userActual; else loginTemplate">
+        <div class="dropdown" (mouseenter)="toggleDropdown(true)" (mouseleave)="toggleDropdown(false)">
+          <button class="btn btn-outline-none dropdown-toggle" id="dropdownUserMenu" aria-expanded="false">
+            <img src="assets/person.svg" alt="User">
+            {{ userActual.fullName }}
+          </button>
+          <ul class="dropdown-menu" [class.show]="showDropdown" aria-labelledby="dropdownUserMenu">
+            <li><a class="dropdown-item" href="/user">Perfil</a></li>
+            <li><a class="dropdown-item" href="/admin" *ngIf="userActual?.role === 'ADMIN'">Admin</a></li>
+            <li><a class="dropdown-item" href="#" (click)="logout()">Cerrar sesión</a></li>
+          </ul>
+
+        </div>
+      </div>
+
+      <ng-template #loginTemplate>
+        <button class="btn btn-outline-none" (click)="navigateToLogin()">
+          <img src="assets/person.svg" alt="Iniciar sesión">
+          Iniciar sesión
+        </button>
+      </ng-template>
+    </div>
+
+  </nav>
+</div>

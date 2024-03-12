@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-md-3 bg-light p-5 text-center">
+        <h3>Filtrar Productos</h3>
+        <!-- filter by brand -->
+        <div class="my-3">
+            <div class="row">
+                <div class="col-3">
+                    <label for="brand">Marca:</label>
+                </div>
+                <div class="col-9">
+                    <select class="form-select" name="brand" [(ngModel)]="filter.brand" (ngModelChange)="applyFilters()">
+                            <option *ngFor="let b of brands" [value]="b">
+                              {{b}}
+                            </option>
+                        </select>
+                </div>
+            </div>
+        </div>
+        <!-- filter by category -->
+        <div class="my-3">
+            <div class="row">
+                <div class="col-3">
+                    <label for="category">Categoria:</label>
+                </div>
+                <div class="col-9">
+                    <select class="form-select" name="category" [(ngModel)]="filter.categoryId" (ngModelChange)="applyFilters()">
+                            <option *ngFor="let c of categories" [value]="c.id">
+                              {{c.name}}
+                            </option>
+                        </select>
+                </div>
+            </div>
+        </div>
+        <!-- filter by price -->
+        <div class="my-3">
+            <div class="row">
+                <div class="col-2">
+                    Mín:
+                </div>
+                <div class="col-4">
+                    <input class="form-control form-text" type="number" [(ngModel)]="filter.priceMin" min="0" max="{{filter.priceMax}}" (ngModelChange)="applyFilters()">
+                </div>
+                <div class="col-2">
+                    Max:
+                </div>
+                <div class="col-4">
+                    <input class="form-control form-text" type="number" [(ngModel)]="filter.priceMax" min="filter.priceMin" max="{{maxPrice}}" (ngModelChange)="applyFilters()">
+                </div>
+            </div>
+            <div>
+                <mat-slider min="0" max={{maxPrice}}>
+                    <input [(ngModel)]="filter.priceMin" matSliderStartThumb (mouseup)="applyFilters()">
+                    <input [(ngModel)]="filter.priceMax" matSliderEndThumb (mouseup)="applyFilters()">
+                </mat-slider>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="container product-list text-center my-2">
+            <h2>Catálogo</h2>
+            <div class="row mb-2">
+                <div class="col-md-4" *ngFor="let product of products | slice:pageIndex*pageSize:(pageIndex+1)*pageSize;">
+                    <app-catalog-element [product]="product" [produtAlert]="produtAlert" (addAlertEvent)="addAlert($event)" (addToCartEvent)="addToCart($event)"></app-catalog-element>
+
+                </div>
+
+            </div>
+            <mat-paginator [pageSizeOptions]="[6, 12, 30, 120]" [pageSize]="6" [length]="totalElements" (page)="nextPage($event)"> </mat-paginator>
+
+        </div>
+    </div>
+</div>

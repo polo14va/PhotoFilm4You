@@ -1,0 +1,28 @@
+<div class="container mt-4">
+    <h2>Tus pedidos realizados</h2>
+    <div *ngIf="orders?.length === 0">
+        <p>No tienes ordenes</p>
+    </div>
+    <div *ngIf="orders?.length !== 0">
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="list-group mb-3">
+                    <li class="list-group-item" *ngFor="let order of orders">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="d-flex justify-content-between">
+                                        <p><strong>Orden</strong> {{ order.orderId }}</p>
+                                        <p><strong>Precio:</strong> {{order.price}} €</p>
+                                        <p><strong>Numero de artículos:</strong> {{order.count}}</p>
+                                    </div>
+                                    <a [routerLink]="['/orderdetails', order.orderId]" class="btn btn-primary m-2">Ver detalle del pedido</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
